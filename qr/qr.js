@@ -8,5 +8,14 @@ const urlParams = new URLSearchParams(queryString);
 
 const poster = urlParams.get('poster')
 
+const Http = new XMLHttpRequest();
+const url='http://18.116.35.186:58008/';
+Http.open("POST", url);
+Http.send('poster=' + poster);
+
+Http.onreadystatechange = (e) => {
+  console.log(e.currentTarget.status)
+}
+
 if (poster && redirects[poster]) window.location.replace(redirects[poster])
 else window.location.replace(redirects.default)
