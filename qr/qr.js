@@ -17,5 +17,5 @@ Http.onreadystatechange = (e) => {
   console.log(e.currentTarget.status)
 }
 
-if (poster && redirects[poster]) window.location.replace(redirects[poster])
-else window.location.replace(redirects.default)
+// if (poster && redirects[poster]) window.location.replace(redirects[poster])
+// else window.location.replace(redirects.default)
