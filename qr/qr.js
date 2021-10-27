@@ -3,10 +3,17 @@ const redirects = {
 }
 
 const queryString = window.location.search;
-
 const urlParams = new URLSearchParams(queryString);
 
 const poster = urlParams.get('poster')
+
+const redirect = redirects.default
+if (poster && redirects[poster]) redirect = (redirects[poster])
+
+function link() {
+  document.getElementById('link').href = redirect;
+}
+
 
 const Http = new XMLHttpRequest();
 const url=`https://poster-club-qr.loca.lt/`;
@@ -17,8 +24,7 @@ Http.send(JSON.stringify({ "poster": poster}));
 
 Http.onreadystatechange = (e) => {
   console.log(e.currentTarget.status)
-}
 
-if (poster && redirects[poster]) window.location.replace(redirects[poster])
-else window.location.replace(redirects.default)
+  window.location.replace(redirect)
+}
 
